@@ -28,16 +28,21 @@ function testRainy() {
     console.log(weather);
     expect(weather).includes("rain", "Test failed: Expected 'rain' in weather description");
 }
+function highPrecipLowWindStub() {
+    return {
+        temperatureInC: 30,
+        precipitation: 80,   // > 60
+        humidity: 90,
+        windSpeedKMPH: 10    // < 50
+    };
+}
 
 function testHighPrecipitation() {
-    // This instance of stub needs to be different-
-    // to give high precipitation (>60) and low wind-speed (<50)
-
-    const weather = report(sensorStub);
-
-    // strengthen the assert to expose the bug
-    // (function returns Sunny day, it should predict rain)
-    expect(weather).is.not.empty;
+ const weather = report(highPrecipLowWindStub);
+    console.log(weather);
+     expect(weather).is.not.empty;
+    expect(weather).includes("rain", "Expected rainy conditions for high precipitation and low wind");
+   
 }
 
 testRainy();

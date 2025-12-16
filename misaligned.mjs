@@ -1,6 +1,6 @@
-import { expect } from 'chai';
 
-function print_color_map() {
+
+export function print_color_map() {
     const lines = [];
     const majorColors = ["White", "Red", "Black", "Yellow", "Violet"];
     const minorColors = ["Blue", "Orange", "Green", "Brown", "Slate"];
@@ -13,13 +13,3 @@ function print_color_map() {
     return {result: majorColors.length * minorColors.length, lines};
 }
 
-const { result, lines } = print_color_map();
-expect(result).equals(25);
-
-
-const firstLine = lines[0];
-// We expect numbering to start from 1:
-expect(firstLine).equals("1 | White | Blue");
-
-
-console.log('All is well (maybe!)');

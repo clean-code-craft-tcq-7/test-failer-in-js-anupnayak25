@@ -34,12 +34,12 @@ describe("weather report tests", function () {
   }
 
   it("should report rainy weather for windy and wet conditions", function () {
-    const weather = report(windyWetStub());
+    const weather = report(windyWetStub);
     console.log(weather);
     expect(weather).includes("rain");
   });
   it("should report rain for high precipitation and low wind", function () {
-    const weather = report(highPrecipLowWindStub());
+    const weather = report(highPrecipLowWindStub);
     console.log(weather);
     expect(weather).includes("rain");
   });

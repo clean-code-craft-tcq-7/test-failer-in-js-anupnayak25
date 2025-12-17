@@ -1,7 +1,7 @@
 import {describe, it} from 'node:test';
 import {expect} from 'chai';
 import {size} from './tshirts.mjs';
-import {report , sensorStub,highPrecipLowWindStub} from './weatherreport.mjs';
+import {report} from './weatherreport.mjs';
 import {print_color_map} from './misaligned.mjs';
 
 describe('tshirt tests', function() {
@@ -25,13 +25,14 @@ describe('misaligned color map tests', function() {
 });
 
 describe('weather report tests', function() {
-  it('should report rainy weather for default sensor stub', function() {
-    const weather = report(sensorStub);
+    
+  it('should report rainy weather for windy and wet conditions', function() {
+    const weather = report( {temperatureInC: 50, precipitation: 70, humidity: 26, windSpeedKMPH: 52,});
     console.log(weather);
     expect(weather).includes('rain');
   });
   it('should report rain for high precipitation and low wind', function() {
-    const weather = report(highPrecipLowWindStub);
+    const weather = report({ temperatureInC: 30, precipitation: 80, humidity: 90, windSpeedKMPH: 10 });
     console.log(weather);
     expect(weather).includes('rain');
   });

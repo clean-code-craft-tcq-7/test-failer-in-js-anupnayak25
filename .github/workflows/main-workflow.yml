@@ -26,3 +26,7 @@ jobs:
       - name: weather fail
         if: always()
         run: node weatherreport.mjs
+      
+      - name: Run Tests
+        if: always()
+        run: node main.test.mjs
